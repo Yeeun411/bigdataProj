@@ -1,0 +1,16 @@
+import pandas as pd
+import numpy as np
+import os
+
+forders = os.listdir('desktop/무제 폴더')
+print(forders)
+
+
+df_all = pd.DataFrame()
+for i in range(0,len(forders)):
+    if forders[i].split('.')[1] == 'csv':
+        file = './desktop/무제 폴더/'+forders[i]
+        df= pd.read_csv(file, encoding='cp949')
+        df_all = pd.concat([df_all, df])
+
+df_all.to_csv('./desktop/무제 폴더/total.csv', index = False
